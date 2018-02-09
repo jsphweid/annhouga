@@ -1,5 +1,5 @@
 # ANNHOUGA
-Automated Neural Network Hyperparameter Optimization Using Genetic Algorithms (and Javascript / Kue, Python, Tensorflow, Docker, AWS)
+Automated Neural Network Hyperparameter Optimization Using Genetic Algorithms (and Python, Keras / Tensorflow, maybe Javascript / Kue, Docker, AWS)
 
 
 # Running
