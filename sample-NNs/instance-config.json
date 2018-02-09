@@ -1,0 +1,43 @@
+{
+    "data": {
+        "xTrainPath": "/var/tmp/annhouga/data/xTrain.json",
+        "yTrainPath": "/var/tmp/annhouga/data/yTrain.json",
+        "xTestPath": "/var/tmp/annhouga/data/xTest.json",
+        "yTestPath": "/var/tmp/annhouga/data/yTest.json"
+    },
+    "epochs": 500,
+    "batch_size": 200,
+    "layers": [
+        {
+            "type": "Dense",
+            "activation": "relu",
+            "units": 128
+        },
+        {
+            "type": "Dropout",
+            "rate": 0.5
+        },
+        {
+            "type": "Dense",
+            "activation": "relu",
+            "units": 64
+        },
+        {
+            "type": "Dropout",
+            "rate": 0.5
+        },
+        {
+            "type": "Dense",
+            "activation": "softmax"
+        }
+    ],
+    "optimizer": {
+        "type": "SGD",
+        "lr": 0.01,
+        "decay": 0.00006,
+        "momentum": 0.9,
+        "nesterov": true
+    },
+    "loss": "categorical_crossentropy",
+    "metrics": ["accuracy"]
+}

@@ -1,0 +1,44 @@
+{
+    "data": {
+        "xTrainPath": "/var/tmp/annhouga/data/xTrain",
+        "yTrainPath": "/var/tmp/annhouga/data/yTrain",
+        "xTestPath": "/var/tmp/annhouga/data/xTest",
+        "yTestPath": "/var/tmp/annhouga/data/yTest"
+    },
+    "epochs": 500,
+    "batch_size": [1, 300],
+    "numHiddenLayers": [3, 10],
+    "optimizers": [
+        {
+            "type": "SGD",
+            "learningRate": [0.1, 0.001],
+            "momentum": [0.0, 10.0],
+            "decay": [0.0, 10.0],
+            "nesterov": [false, true]
+        },
+        {
+            "type": "Adam",
+            "learningRate": 0.001,
+            "beta_1": 0.9,
+            "beta_2": [0.008, 0.009],
+            "epsilon": 0,
+            "decay": [0.0, 1.0],
+            "amsgrad": [false, true]
+        }
+    ],
+    "hiddenLayers": [
+        {
+            "type": "Dense",
+            "activation": ["softmax", "relu", "sigmoid"],
+            "numNeurons": [2, 256]
+        }
+    ],
+    "outputLayer": [
+        {
+            "type": "Dense",
+            "activation": ["softmax"]
+        }
+    ],
+    "loss": ["categorical_crossentropy", "sparse_categorical_crossentropy", "binary_crossentropy", "mean_squared_error"],
+    "metrics": "accuracy"
+}

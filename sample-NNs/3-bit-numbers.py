@@ -1,9 +1,3 @@
-
-#################### Adding these two lines because tensorflow wasn't compiled on this machine (used pip install)
-import os
-os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
-####################
-
 import numpy as np
 import tensorflow as tf 
 from random import randint
