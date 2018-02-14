@@ -13,8 +13,8 @@ You may or may not need to do all of these steps:
  4. activate your virtualenv `source ~/whatever-you-want/bin/activate`
 
 Now that your virtualenv is activated... install python dependencies:
- 5. `pip install keras`
- 6. `pip3 install --upgrade tensorflow`
+ 1. `pip install keras`
+ 2. `pip3 install --upgrade tensorflow`
 
 Finally, build data:
 `python ./sample-NNs/generate-data-for-simple-binary-classifier.py`
