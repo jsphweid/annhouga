@@ -12,7 +12,7 @@ You may or may not need to do all of these steps:
  3. set up virtualenv `virtualenv --system-site-packages -p python3 ~/whatever-you-want`
  4. activate your virtualenv `source ~/whatever-you-want/bin/activate`
 
-Now that your virtualenv is activated... install python dependencies
+Now that your virtualenv is activated... install python dependencies:
  5. `pip install keras`
  6. `pip3 install --upgrade tensorflow`
 
