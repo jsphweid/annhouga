@@ -23,4 +23,13 @@ Finally, build data:
 Then run...:
 `python ./src/run.py`
 
+`conda create -n annhouga`
+`source activate yourenvname`
+
+Install redis: https://redis.io/topics/quickstart
+and
+`pip install redis`
+
+start - `rabbitmq-server`
+stop - `rabbitmqctl stop`
  
