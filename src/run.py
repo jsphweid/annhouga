@@ -40,4 +40,3 @@ model.compile(loss=config['loss'], optimizer=optimizer, metrics=config['metrics'
 model.fit(x_train, y_train, epochs=config['epochs'], batch_size=config['batch_size'])
 
 score = model.evaluate(x_test, y_test, batch_size=config['batch_size'])
-print(score)
