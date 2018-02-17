@@ -1,20 +1,14 @@
-import pika, time, timeit
+import boto3, json
+from nn_processors import basic_nn_processor
 
+sqs = boto3.resource('sqs')
+queue = sqs.get_queue_by_name(QueueName='run-nn')
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
-channel = connection.channel()
+while 1:
+    print('[*] Waiting for messages. To exit press CTRL+C')
+    messages = queue.receive_messages(WaitTimeSeconds=20, MaxNumberOfMessages=1)
 
-channel.queue_declare(queue='task_queue', durable=True)
-print(' [*] Waiting for messages. To exit press CTRL+C')
-
-def callback(ch, method, properties, body):
-    print(" [x] Received %r" % body)
-    print(timeit.timeit('"-".join(str(n) for n in range(100))', number=100000))
-
-    ch.basic_ack(delivery_tag = method.delivery_tag)
-
-channel.basic_qos(prefetch_count=1)
-
-channel.basic_consume(callback, queue='task_queue', no_ack=False)
-
-channel.start_consuming()
+    for message in messages:
+        print("Message received: {0}".format(message.body))
+        basic_nn_processor(json.loads(message.body))
+        message.delete()

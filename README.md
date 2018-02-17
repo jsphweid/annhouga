@@ -24,7 +24,7 @@ Then run...:
 `python ./src/run.py`
 
 `conda create -n annhouga`
-`source activate yourenvname`
+`source activate annhouga`
 
 Install redis: https://redis.io/topics/quickstart
 and
