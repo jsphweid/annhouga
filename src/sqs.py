@@ -6,11 +6,15 @@ with open('../sample-NNs/instance-config.json', 'r') as f:
 # Get the service resource
 sqs = boto3.resource('sqs')
 
-# Get the queue
 queue = sqs.get_queue_by_name(QueueName='run-nn')
 
-# Create a new message
-response = queue.send_message(MessageBody=json.dumps(config))
+arr = []
+for i in range(0, 10):
+    message = { "Id": str(i), "MessageBody": json.dumps(config) }
+    arr.append(message)
+
+response = queue.send_messages(Entries=arr)
+
 
 # The response is NOT a resource, but gives you a message ID and MD5
 print(response.get('MessageId'))
