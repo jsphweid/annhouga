@@ -4,17 +4,19 @@ Automated Neural Network Hyperparameter Optimization Using Genetic Algorithms (a
 
 # Running
 
-I assume you are running python 3.
+I assume you are running python 3 and anaconda.
 
-You may or may not need to do all of these steps:
- 1. install pip `sudo easy_install pip`
- 2. install virtualenv with pip `pip install --upgrade virtualenv`
- 3. set up virtualenv `virtualenv --system-site-packages -p python3 ~/whatever-you-want`
- 4. activate your virtualenv `source ~/whatever-you-want/bin/activate`
+Install virtual environment: `conda create --name annhouga`
 
-Now that your virtualenv is activated... install python dependencies:
+Activate: `source activate annhouga`
+
+Deactivate: `source deactivate`
+
+
+Now that your virtual environment is activated... install python dependencies:
  1. `pip install keras`
  2. `pip3 install --upgrade tensorflow`
+ 3. `pip install mysqlclient` (requires mysql to be installed... `brew install mysql`)
 
 Finally, build data:
 `python ./sample-NNs/generate-data-for-simple-binary-classifier.py`
@@ -22,4 +24,6 @@ Finally, build data:
 Then run...:
 `python ./src/run.py`
 
+`conda create -n annhouga`
+`source activate annhouga`
  

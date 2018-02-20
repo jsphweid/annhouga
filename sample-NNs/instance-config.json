@@ -5,7 +5,7 @@
         "xTestPath": "/var/tmp/annhouga/data/xTest.json",
         "yTestPath": "/var/tmp/annhouga/data/yTest.json"
     },
-    "epochs": 500,
+    "epochs": 100,
     "batch_size": 200,
     "layers": [
         {
