@@ -16,6 +16,7 @@ Deactivate: `source deactivate`
 Now that your virtual environment is activated... install python dependencies:
  1. `pip install keras`
  2. `pip3 install --upgrade tensorflow`
+ 3. `pip install mysqlclient` (requires mysql to be installed... `brew install mysql`)
 
 Finally, build data:
 `python ./sample-NNs/generate-data-for-simple-binary-classifier.py`
@@ -25,11 +26,4 @@ Then run...:
 
 `conda create -n annhouga`
 `source activate annhouga`
-
-Install redis: https://redis.io/topics/quickstart
-and
-`pip install redis`
-
-start - `rabbitmq-server`
-stop - `rabbitmqctl stop`
  

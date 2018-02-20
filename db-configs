@@ -1,0 +1,11 @@
+CREATE TABLE work_table (
+	id INT NOT NULL AUTO_INCREMENT,
+	project VARCHAR(255) NOT NULL,
+	loss DECIMAL(8, 4) NOT NULL,
+	accuracy DECIMAL(6, 4) NOT NULL,
+	run_time DECIMAL(6, 2) NOT NULL,
+	generation INT NOT NULL,
+	config TEXT NOT NULL,
+	date DATETIME NOT NULL,
+	PRIMARY KEY (id)
+);

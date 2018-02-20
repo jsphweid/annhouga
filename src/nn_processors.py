@@ -30,8 +30,6 @@ def basic_nn_processor(config):
         x_test = load_data(config['data']['xTestPath'])
         y_test = load_data(config['data']['yTestPath'])
 
-    build_time_start = time.time()
-
     model = Sequential()
 
     for index, layer_config in enumerate(config['layers']):
@@ -44,10 +42,15 @@ def basic_nn_processor(config):
 
         model.add(make_layer(copy.deepcopy(layer_config), additional_args))
 
-
     optimizer = make_optimizer(copy.deepcopy(config['optimizer']))
     model.compile(loss=config['loss'], optimizer=optimizer, metrics=config['metrics'])
+    run_time_start = time.time()
     model.fit(x_train, y_train, epochs=config['epochs'], batch_size=config['batch_size'])
-    end_build_time = time.time() - build_time_start  
-    score = model.evaluate(x_test, y_test, batch_size=config['batch_size'])
-    end_run_time = time.time() - end_build_time
+    run_time_end = time.time()
+    loss, accuracy = model.evaluate(x_test, y_test, batch_size=config['batch_size'])
+    return {
+        "loss": loss,
+        "accuracy": accuracy,
+        "run_time": run_time_end - run_time_start,
+        "config": config
+    }
