@@ -36,7 +36,11 @@ def add_processed_nn_jobs_to_db(rows):
     cur.execute(statement)
     db.commit()
 
+num_messages = 0
+
 while 1:
+    if num_messages < 3:
+        time.sleep(5)
     print('[*] Waiting for rds jobs. To exit press CTRL+C')
     messages = rds_job_queue.receive_messages(WaitTimeSeconds=20, MaxNumberOfMessages=10)
     num_messages = len(messages)
