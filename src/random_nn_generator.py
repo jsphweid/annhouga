@@ -4,16 +4,11 @@ with open('../sample-NNs/sample-user-config.json', 'r') as f:
     user_config = json.load(f)
 
 def handle_number_range(range):
-    print('-------------------handle_number_range', range)
     first_num = range[0]
     second_num = range[1]
-    print('---is_real_number(first_num)', types.is_real_number(first_num))
-    print('---is_real_number(second_num)', types.is_real_number(second_num))
     if types.is_int(first_num) and types.is_int(second_num):
-        print('both are ints...')
         return random.randint(int(first_num), int(second_num))
     elif types.is_real_number(first_num) and types.is_real_number(second_num):
-        print('both are floats', random.uniform(float(first_num), float(second_num)))
         return random.uniform(float(first_num), float(second_num))
     else:
         raise ValueError('Looked like you entered a range but values in the range are not valid.')
@@ -28,24 +23,17 @@ def handle_list_of_dicts(list_of_dicts):
     return handle_dict(random.choice(list_of_dicts))
 
 def generic_handler(value):
-    # print('--------------value', value)
     if type(value) is str or types.is_real_number(value):
-        # print('value1', value)
         return value
     elif types.is_list_with_two_numbers(value):
-        # print('value2', value)
         return handle_number_range(value)
     elif types.is_list_of_dictionaries(value):
-        # print('value3', value)
         return handle_list_of_dicts(value)
     elif type(value) is dict:
-        # print('value4', value)
         return handle_dict(value)
     elif type(value) is list:
-        # print('value5', value)
         return random.choice(value)
     else: # consider just taking out the top...
-        # print('value6', value)
         return value
 
 def handle_layers():
@@ -65,7 +53,7 @@ new_config['optimizers'] = generic_handler(user_config['optimizers'])
 new_config['loss'] = generic_handler(user_config['loss'])
 new_config['metrics'] = generic_handler(user_config['metrics'])
 
-print(new_config['optimizers'])
+print(new_config)
 
 
 # TODO, should I use the generic handler for everything or use specific 'private functions' when appropriate? (i.e. everything should fall into the correct private function handler through the generic function....)

@@ -1,19 +1,15 @@
 def couldBeBool(potential_bool):
-    type(potential_bool) == bool
+    return type(potential_bool) == bool
 
 def is_int(potential_int):
     try:
-        print('potential_int', potential_int)
-        num = int(potential_int)
-        print('num', num)
-        return isinstance(num, int) and not couldBeBool(num)
+        return isinstance(potential_int, int) and not couldBeBool(potential_int)
     except Exception:
         return False
 
 def is_float(potential_float):
     try:
-        num = float(potential_float)
-        return isinstance(num, float) and not couldBeBool(num)
+        return isinstance(potential_float, float) and not couldBeBool(potential_float)
     except Exception:
         return False
 
