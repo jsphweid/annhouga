@@ -6,8 +6,8 @@
         "yTestPath": "/var/tmp/annhouga/data/yTest"
     },
     "epochs": 500,
-    "batch_size": [1, 300],
-    "numHiddenLayers": [3, 10],
+    "batchSize": [1, 300],
+    "numHiddenLayers": [1, 5],
     "optimizers": [
         {
             "type": "SGD",
@@ -26,19 +26,26 @@
             "amsgrad": [false, true]
         }
     ],
+    "firstLayer": {
+        "type": "Dense",
+        "activation": "relu",
+        "units": 128
+    },
     "hiddenLayers": [
         {
             "type": "Dense",
             "activation": ["softmax", "relu", "sigmoid"],
             "numNeurons": [2, 256]
-        }
-    ],
-    "outputLayer": [
+        },
         {
-            "type": "Dense",
-            "activation": ["softmax"]
+            "type": "Dropout",
+            "rate": 0.5
         }
     ],
+    "outputLayer": {
+        "type": "Dense",
+        "activation": ["softmax"]
+    },
     "loss": ["categorical_crossentropy", "sparse_categorical_crossentropy", "binary_crossentropy", "mean_squared_error"],
     "metrics": "accuracy"
 }

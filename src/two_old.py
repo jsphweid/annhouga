@@ -57,9 +57,9 @@ def callback(ch, method, properties, body):
 
     optimizer = make_optimizer(copy.deepcopy(config['optimizer']))
     model.compile(loss=config['loss'], optimizer=optimizer, metrics=config['metrics'])
-    model.fit(x_train, y_train, epochs=config['epochs'], batch_size=config['batch_size'])
+    model.fit(x_train, y_train, epochs=config['epochs'], batch_size=config['batchSize'])
     end_build_time = time.time() - build_time_start  
-    score = model.evaluate(x_test, y_test, batch_size=config['batch_size'])
+    score = model.evaluate(x_test, y_test, batch_size=config['batchSize'])
     end_run_time = time.time() - end_build_time
 
     ch.basic_ack(delivery_tag = method.delivery_tag)

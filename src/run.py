@@ -37,6 +37,6 @@ for index, layer_config in enumerate(config['layers']):
 
 optimizer = make_optimizer(config['optimizer'])
 model.compile(loss=config['loss'], optimizer=optimizer, metrics=config['metrics'])
-model.fit(x_train, y_train, epochs=config['epochs'], batch_size=config['batch_size'])
+model.fit(x_train, y_train, epochs=config['epochs'], batch_size=config['batchSize'])
 
-score = model.evaluate(x_test, y_test, batch_size=config['batch_size'])
+score = model.evaluate(x_test, y_test, batch_size=config['batchSize'])

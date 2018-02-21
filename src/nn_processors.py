@@ -45,9 +45,9 @@ def basic_nn_processor(config):
     optimizer = make_optimizer(copy.deepcopy(config['optimizer']))
     model.compile(loss=config['loss'], optimizer=optimizer, metrics=config['metrics'])
     run_time_start = time.time()
-    model.fit(x_train, y_train, epochs=config['epochs'], batch_size=config['batch_size'])
+    model.fit(x_train, y_train, epochs=config['epochs'], batch_size=config['batchSize'])
     run_time_end = time.time()
-    loss, accuracy = model.evaluate(x_test, y_test, batch_size=config['batch_size'])
+    loss, accuracy = model.evaluate(x_test, y_test, batch_size=config['batchSize'])
     return {
         "loss": loss,
         "accuracy": accuracy,
