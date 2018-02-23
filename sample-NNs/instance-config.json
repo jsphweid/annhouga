@@ -6,7 +6,7 @@
         "yTestPath": "/var/tmp/annhouga/data/yTest.json"
     },
     "epochs": 100,
-    "batch_size": 200,
+    "batchSize": 200,
     "layers": [
         {
             "type": "Dense",
