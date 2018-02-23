@@ -29,3 +29,13 @@ Then run...:
 
 Run tests...:
 `ptw -c`
+
+You'll need an aws account and 2 SQS queues: annhouga-nn-jobs and annhouga-rds-jobs
+
+Add some jobs:
+`python add_10_random_jobs.py`
+
+Start the consumers (no more than 1 of rds, and maybe a few nn_processors):
+`python nn_job_processor.py`
+`python rds_job_processor.py`
+
