@@ -39,3 +39,11 @@ Start the consumers (no more than 1 of rds, and maybe a few nn_processors):
 `python nn_job_processor.py`
 `python rds_job_processor.py`
 
+# Final notes
+At this time, the project is just a proof of concept and I never got around to fully finishing this although it may be close to an MVP.
+
+For one, I didn't implement any sort of reproduction. My initial thought would be to do this using the existing randomized nn generator but instead of initial user-entered parameters, ranges specified by the two configs trying to merge (assuming sexual reproduction).
+
+A lot of NNs are probably just trash but logic needs to be built in if they stall out to exit and record some values.
+
+That's it for now.
