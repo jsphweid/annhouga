@@ -27,6 +27,5 @@ Finally, build data:
 Then run...:
 `python ./src/run.py`
 
-`conda create -n annhouga`
-`source activate annhouga`
- 
+Run tests...:
+`ptw -c`

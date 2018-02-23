@@ -44,16 +44,16 @@ def handle_layers():
     layers.append(generic_handler(user_config['outputLayer']))
     return layers
 
-new_config = {}
-new_config['data'] = user_config['data']
-new_config['epochs'] = generic_handler(user_config['epochs'])
-new_config['batchSize'] = generic_handler(user_config['batchSize'])
-new_config['layers'] = handle_layers()
-new_config['optimizers'] = generic_handler(user_config['optimizers'])
-new_config['loss'] = generic_handler(user_config['loss'])
-new_config['metrics'] = generic_handler(user_config['metrics'])
-
-print(new_config)
+def get_random_canned_config():
+    new_config = {}
+    new_config['data'] = user_config['data']
+    new_config['epochs'] = generic_handler(user_config['epochs'])
+    new_config['batchSize'] = generic_handler(user_config['batchSize'])
+    new_config['layers'] = handle_layers()
+    new_config['optimizer'] = generic_handler(user_config['optimizers'])
+    new_config['loss'] = generic_handler(user_config['loss'])
+    new_config['metrics'] = generic_handler(user_config['metrics'])
+    return new_config
 
 
 # TODO, should I use the generic handler for everything or use specific 'private functions' when appropriate? (i.e. everything should fall into the correct private function handler through the generic function....)

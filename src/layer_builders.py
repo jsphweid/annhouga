@@ -1,6 +1,7 @@
 from keras.layers import Dense, Dropout, Activation
 
 def make_layer(layer_config, additional_args):
+    print('-----------', layer_config)
     switcher = {
         'Dense': (lambda args : Dense(**args)),
         'Dropout': (lambda args : Dropout(**args))
