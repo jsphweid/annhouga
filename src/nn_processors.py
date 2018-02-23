@@ -33,7 +33,6 @@ def basic_nn_processor(config):
     model = Sequential()
 
     for index, layer_config in enumerate(config['layers']):
-
         additional_args = {}
         if index == 0: # handle input layer
             additional_args['input_dim'] = len(x_train[0])

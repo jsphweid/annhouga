@@ -36,10 +36,19 @@ def generic_handler(value):
     else: # consider just taking out the top...
         return value
 
-def handle_layers():
+def assemble_hidden_layers():
     numHiddenLayers = handle_number_range(user_config['numHiddenLayers'])
-    layers = [handle_list_of_dicts(user_config['hiddenLayers']) for i in range(numHiddenLayers)]
-    # layers = [5 for i in range(numHiddenLayers)]
+    layers = []
+    # prevent 2 dropouts in a row...
+    for i in range(numHiddenLayers):
+        pool_of_available_layers = user_config['hiddenLayers']
+        if i > 0 and layers[i - 1]['type'] == 'Dropout':
+            pool_of_available_layers = [layer for layer in pool_of_available_layers if layer['type'] != 'Dropout']
+        layers.append(handle_list_of_dicts(pool_of_available_layers))
+    return layers
+
+def handle_layers():
+    layers = assemble_hidden_layers()
     layers.insert(0, generic_handler(user_config['firstLayer']))
     layers.append(generic_handler(user_config['outputLayer']))
     return layers
@@ -52,7 +61,7 @@ def get_random_canned_config():
     new_config['layers'] = handle_layers()
     new_config['optimizer'] = generic_handler(user_config['optimizers'])
     new_config['loss'] = generic_handler(user_config['loss'])
-    new_config['metrics'] = generic_handler(user_config['metrics'])
+    new_config['metrics'] = user_config['metrics']
     return new_config
 
 

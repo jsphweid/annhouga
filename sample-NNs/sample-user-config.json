@@ -5,8 +5,8 @@
         "xTestPath": "/var/tmp/annhouga/data/xTest.json",
         "yTestPath": "/var/tmp/annhouga/data/yTest.json"
     },
-    "epochs": 500,
-    "batchSize": [1, 300],
+    "epochs": 100,
+    "batchSize": [1, 10],
     "numHiddenLayers": [1, 5],
     "optimizers": [
         {
@@ -47,5 +47,5 @@
         "activation": ["softmax"]
     },
     "loss": ["categorical_crossentropy", "sparse_categorical_crossentropy", "binary_crossentropy", "mean_squared_error"],
-    "metrics": "accuracy"
+    "metrics": ["accuracy"]
 }
